@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>insta485</title>
+</head>
+
+<body>
+  <div class = "heading">
+    <a href="{{ url_for('show_index') }}" class = "home">Home</a>
+    <a href="{{url_for('show_explore')}}" class = "explore">Explore</a>
+    <a href="{{url_for('show_user', username = logname)}}">{{logname}}</a>
+  </div>
+  <p> <b> Discover People </b> </p>
+  {%for user in users%}
+    {%set vars = {'foo':True}%}
+    {% if user.username == logname %}
+    {% if vars.update({'foo': False}) %} {% endif %}
+    {%endif%}
+    {%for follow in following%}
+      {% if user.username == follow.username2 %}
+      {% if vars.update({'foo': False}) %} {% endif %}
+      {%endif%}
+  {%endfor%}
+  {% if vars.foo %}
+  <img src = "{{url_for('download_file',filename=user.filename)}}" class = "userphoto" alt = "explore profile"> <a href = "{{url_for('show_user', username = user.username)}}">{{user.username}} </a>
+  <p> </p>
+  <form action="/following/?target=/explore/" method="post" enctype="multipart/form-data">
+    <input type="submit" name="follow" value="follow"/>
+    <input type="hidden" name="username" value="{{user.username}}"/>
+      <input type="hidden" name="operation" value="follow" />
+    </form>
+  {%endif%}
+  {%endfor%}
+
+</body>
+
+</html>

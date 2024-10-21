@@ -1,0 +1,42 @@
+.post {
+  display: block;
+  border-style: solid;
+  border-color: #c5ccd3;
+  width: 400px;
+  height: auto;
+  margin:auto;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: auto;
+}
+
+.userphoto {
+  width: auto;
+  height: 40px;
+}
+
+.timestamp {
+  display: inline;
+  margin-left:150px;
+  color: LightGray;
+}
+
+.pics {
+  display: inline;
+  width: 40px;
+  height: auto;
+}
+
+.home {
+  display: inline-block;
+  margin-right:4050px;
+}
+
+.explore {
+  display: inline-block;
+}

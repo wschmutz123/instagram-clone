@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="static/css/style.css">
+  <title>insta485</title>
+</head>
+
+<body>
+  <div class = "heading">
+    <a href={{url_for('show_index')}} class = "home">Home</a>
+    <a href="{{url_for('show_explore')}}" class = "explore">Explore</a>
+    <a href="{{url_for('show_user',username=logname)}}">{{logname}}</a>
+  </div>
+
+
+  <p> <b> Following </b> </p>
+  {%for follow in following%}
+    {%if follow["username1"] == username%}
+    <a href="{{url_for('show_user',username=follow["username2"])}}">
+    <img src="{{url_for('download_file',filename=follow['filename'])}}" alt = "people" width = "50" height = "75">
+    <p>{{follow["username2"]}}</p></a>
+    {% if logname != follow["username2"]%}
+    {%set vars = {'foo':True}%}
+    {%if username != follow["username2"]%}
+      {%for follower in following%}
+        {%if logname == follower["username1"] and follower["username2"] == follow["username2"] %}
+        {% if vars.update({'foo': False}) %} {% endif %}
+        <p>following</p>
+        <form action="/following/?target={{url_for('show_following',filename=username)}}" method="post" enctype="multipart/form-data">
+          <input type="submit" name="unfollow" value="unfollow"/>
+          <input type="hidden" name="username" value="{{follow["username2"]}}"/>
+            <input type="hidden" name="operation" value="unfollow" />
+          </form>
+        {%endif%}
+      {%endfor%}
+      {% if vars.foo %}
+        <p>not following</p>
+        <form action="/following/?target={{url_for('show_followers',filename=username)}}" method="post" enctype="multipart/form-data">
+          <input type="submit" name="follow" value="follow"/>
+          <input type="hidden" name="username" value="{{follow["username2"]}}"/>
+            <input type="hidden" name="operation" value="follow" />
+          </form>
+      {%endif%}
+      {%endif%}
+      {%endif%}
+    {%endif%}
+  {%endfor%}
+
+</body>
+
+</html>

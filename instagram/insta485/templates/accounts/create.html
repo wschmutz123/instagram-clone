@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>insta485</title>
+</head>
+
+<body>
+  <div class = "heading">
+    <a href="{{ url_for('show_index') }}" class = "home">Home</a>
+    <a href="{{ url_for('login') }}">Login</a>
+
+  </div>
+
+    <div class='container'>
+        <form action="/accounts/?target={{ url_for('show_index') }}" method="post" enctype="multipart/form-data">
+
+            <div class="container">
+                <div>
+                    <label for="owner">Photo</label>
+                    <input type="file" value="Choose File" name="file" required>
+                </div>
+                <div>
+                    <label for="owner">Name</label>
+                    <input type="text" placeholder="Enter Name" name="fullname"  required/>
+
+                </div>
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Enter Username" name="username" required/>
+
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" placeholder="Enter Email" name="email"  required/>
+
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password"  required/>
+                </div>
+                <div>
+                    <input type="submit" value="signup" name="sign up"/>
+                </div>
+                <div>
+                    <input type="hidden" name="operation" value="create">
+                </div>
+                <div>
+                    Have an account?
+                    <a href="{{url_for('login')}}"><b>Log in</b></a></a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+ * Running on http://127.0.0.1:62651/ (Press CTRL+C to quit)
+127.0.0.1 - - [01/Mar/2021 23:23:59] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [01/Mar/2021 23:23:59] "[37mGET /accounts/login/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:03] "[32mGET /accounts/login HTTP/1.1[0m" 308 -
+127.0.0.1 - - [01/Mar/2021 23:24:03] "[37mGET /accounts/login/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:03] "[37mGET /static/css/style.css HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:03] "[32mPOST /accounts/?target=/ HTTP/1.1[0m" 302 -
+127.0.0.1 - - [01/Mar/2021 23:24:03] "[37mGET / HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:03] "[37mGET /static/js/bundle.js HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:04] "[37mGET /api/v1/p/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:05] "[37mGET /api/v1/p/3/likes/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:05] "[37mGET /api/v1/p/3/comments/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:06] "[37mGET /api/v1/p/3/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:06] "[37mGET /api/v1/p/2/likes/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:07] "[37mGET /api/v1/p/2/comments/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:07] "[37mGET /api/v1/p/2/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:08] "[37mGET /api/v1/p/1/likes/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:08] "[37mGET /api/v1/p/1/comments/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:09] "[37mGET /api/v1/p/1/ HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:09] "[37mGET /uploads/e1a7c5c32973862ee15173b0259e3efdb6a391af.jpg HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:09] "[37mGET /uploads/9887e06812ef434d291e4936417d125cd594b38a.jpg HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:09] "[37mGET /uploads/505083b8b56c97429a728b68f31b0b2a089e5113.jpg HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:09] "[37mGET /uploads/ad7790405c539894d25ab8dcf0b79eed3341e109.jpg HTTP/1.1[0m" 200 -
+127.0.0.1 - - [01/Mar/2021 23:24:09] "[37mGET /uploads/122a7d27ca1d7420a1072f695d9290fad4501a41.jpg HTTP/1.1[0m" 200 -

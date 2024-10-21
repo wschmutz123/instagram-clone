@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <title>insta485</title>
+</head>
+
+<body>
+  <div class = "heading">
+    <a href="{{ url_for('show_index') }}" class = "home">Home</a>
+    <a href="{{ url_for('show_explore') }}" class = "explore">Explore</a>
+    <a href="{{url_for('show_user', username = logname)}}">{{logname}}</a>
+  </div>
+
+  <h1>{{username}}</h1>
+  {%set vars = {'foo':True}%}
+  {% if username != logname%}
+    {%for follower in connection%}
+      {%if follower.username1 == logname and follower.username2 == username %}
+      {% if vars.update({'foo': False}) %} {% endif %}
+      <p>following</p>
+      <form action="/following/?target={{url_for('show_followers',filename=username)}}" method="post" enctype="multipart/form-data">
+        <input type="submit" name="unfollow" value="unfollow"/>
+        <input type="hidden" name="username" value="{{username}}"/>
+          <input type="hidden" name="operation" value="unfollow" />
+        </form>
+      {%endif%}
+    {%endfor%}
+    {% if vars.foo %}
+      <p>not following</p>
+      <form action="/following/?target={{url_for('show_followers',filename=username)}}" method="post" enctype="multipart/form-data">
+        <input type="submit" name="follow" value="follow"/>
+        <input type="hidden" name="username" value="{{username}}"/>
+          <input type="hidden" name="operation" value="follow" />
+        </form>
+  {%endif%}
+  {%elif username == logname%}
+    <a href = "{{url_for('edit_account')}}">Edit profile</a>
+      <form action="{{url_for('logout')}}" method="post" enctype="multipart/form-data">
+        <input type="submit" name="logout" value="Logout"/>
+      </form>
+  {%endif%}
+
+  {%for numPost in numPosts%}
+    <p>
+      {%if numPost.count == 1%}
+        {{numPost.count}} post
+      {%else%}
+        {{numPost.count}} posts
+      {%endif%}
+      <a href="{{url_for('show_followers',filename=username)}}">
+      {%for follower in followers%}
+        {%if follower.count == 1%}
+          {{follower.count}} follower
+        {%else%}
+          {{follower.count}} followers
+        {%endif%}
+      {%endfor%}
+      </a>
+      {%for follow in following%}
+        <a href="{{url_for('show_following',filename=username)}}">{{follow.count}} following</a></p>
+      {%endfor%}
+  {%endfor%}
+  {%for name in fullname%}
+  <p> {{name.fullname}} </p>
+  {%endfor%}
+  {%if username == logname%}
+  <form action="/posts/?target={{url_for('show_user',username=username)}}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <input type="submit" name="create_post" value="upload new post"/>
+    <input type="hidden" name="operation" value="create"/>
+  </form>
+  {%endif%}
+
+  {%for post in posts%}
+    {%if post.owner == username%}
+    <a href="{{ url_for('show_post', post = post.postid) }}">
+      <img src = "{{ url_for('download_file', filename = post.filename) }}" alt = "post image">
+    </a>
+    {%endif%}
+  {%endfor%}
+</body>
+
+</html>
